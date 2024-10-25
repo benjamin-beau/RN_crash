@@ -1,0 +1,13 @@
+stages:
+- deploy-int
+
+mr-script:
+  stage: deploy-int
+  tags:
+  - git-run-2
+  script:
+  - node -v
+  - yarn
+  - npx tsc
+  rules:
+  - if: $CI_PIPELINE_SOURCE == "merge_request_event"
